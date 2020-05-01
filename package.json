@@ -4,9 +4,10 @@
   "description": "适应新项目打包",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf dist && rimraf server_build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js"
+    "build": "npm run clean && cross-env NODE_ENV=production webpack --config build/webpack.config.client.js"
   },
   "repository": {
     "type": "git",

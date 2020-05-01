@@ -1,4 +1,5 @@
 'use strict'
+const fs = require('fs')
 const path = require('path')
 const config = require('./config')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -97,3 +98,44 @@ exports.createNotifierCallback = function () {
     })
   }
 }
+
+exports.getEntry = function(projectsDir) {
+  return fs.readdirSync(projectsDir).reduce((entries, dir) => {
+    const fullDir = path.join(projectsDir, dir)
+    const entry = path.join(fullDir, 'app.js')
+    if (fs.statSync(fullDir).isDirectory() && fs.existsSync(entry)) {
+      entries[dir] = entry
+    }
+
+    return entries
+  }, {})
+}
+
+exports.getHtmls = function(entries, HtmlWebpackPlugin, projectsDir) {
+  var htmlArray = [];
+
+  Object.keys(entries).forEach(function(element){
+    console.log(element)
+    let obj = {
+      _html:element,
+      title:'',
+      chunks:[element]
+    };
+    
+      htmlArray.push(new HtmlWebpackPlugin(getHtmlConfig(obj._html, obj.chunks, projectsDir)))
+  })
+
+  return htmlArray
+}
+
+var getHtmlConfig = function(name,chunks, projectsDir) {
+  return {
+      template:`${projectsDir}/${name}/${name}.html`,
+      filename:`${name}/${name}.html`,
+      inject: true,
+      hash: false,
+      chunks:[name]
+  }
+}
+
+

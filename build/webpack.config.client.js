@@ -20,9 +20,9 @@ const defaultPluins = [
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
   }),
-  new HTMLPlugin({
-    template: path.join(resolve('src/views'), 'index.html')
-  }),
+  // new HTMLPlugin({
+  //   template: path.join(resolve('src/views'), 'index.html')
+  // }),
   // new VueClientPlugin(),
   new VueLoaderPlugin()
 ];
@@ -31,7 +31,7 @@ const devServer = {
   port: 8000,
   host: 'localhost',
   open: true,
-  openPage: ['/public/'],
+  openPage: ['/projecta/'],
   overlay: {
     errors: true
   },
@@ -41,9 +41,9 @@ const devServer = {
     '/api': 'http://127.0.0.1:3333',
     '/user': 'http://127.0.0.1:3333'
   },
-  historyApiFallback: {
-    index: '/public/index.html'
-  }
+  // historyApiFallback: {
+  //   index: '/public/index.html'
+  // }
 }
 
 let config;
@@ -76,14 +76,10 @@ if (isDev) {
   });
 } else {
   config = merge(baseConfig, {
-    entry: {
-      app: path.join(__dirname, '../src/entry.js'),
-      vendor: ['vue']
-    },
-    output: {
-      filename: '[name].[chunkhash:8].js',
-      publicPath: '/public/'
-    },
+    // entry: {
+    //   app: path.join(__dirname, '../src/entry.js'),
+    //   vendor: ['vue']
+    // },
     module: {
       rules: [{
         test: /\.styl/,
@@ -110,14 +106,20 @@ if (isDev) {
       new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // both options are optional
-        filename: '[name].[hash].css',
+        moduleFilename: ({ name }) => {
+          console.log(name, '????????????????????')
+          return `${name}/[id].[hash].css`
+        },
+        // filename: (chunkData) => {
+        //   console.log(chunkData, 'n......')
+        //   return  '[name]/[name].[hash].css';
+        // },
         chunkFilename: '[id].[hash].css'
       }),
       new webpack.NamedChunksPlugin()
     ])
   })
 }
-console.log(resolve('src/common'), '----------------')
 
 config.resolve = {
   alias: {

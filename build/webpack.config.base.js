@@ -1,17 +1,28 @@
+const fs = require('fs')
 const path = require('path');
 const utils = require('./utils')
+const HTMLPlugin = require('html-webpack-plugin');
 const createVueLoaderOptions = require('./vue-loader.config');
 
 const isDev = process.env.NODE_ENV === 'development'
 
+const projectsDir = path.join(__dirname, '../src/projects');
+let entry = utils.getEntry(projectsDir)
+let htmls = utils.getHtmls(entry,HTMLPlugin, projectsDir);
+console.log(htmls, 'x.....................')
+
 const config = {
   target: 'web',
   mode: process.env.NODE_ENV,
-  entry: path.join(__dirname, '../src/entry.js'),
+  entry: entry,
+  // entry: path.join(__dirname, '../src/entry.js'),
   output: {
-    filename: 'bundle.[hash:8].js',
-    path: path.join(__dirname, '../public'),
-    publicPath: 'http://127.0.0.1:8000/public/'
+    filename: (chunkData) => {
+      return chunkData.chunk.name === 'main' ? '[name].js': '[name]/[name].js';
+    },
+    // filename: 'bundle.[hash:8].js',
+    path: path.join(__dirname, '../dist'),
+    publicPath: 'http://127.0.0.1:8000/dist/'
   },
   module: {
     rules: [{
@@ -59,7 +70,11 @@ const config = {
       }
     }
     ]
-  }
+  },
+  plugins: [
+    ...htmls
+  ]
+  
 }
 
 module.exports = config;
