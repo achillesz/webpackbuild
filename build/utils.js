@@ -12,6 +12,31 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
 
+exports.assetsPath1 = function(resourcePath, entry) {
+
+  let findEntry = '';
+  // console.log(resourcePath, resourceQuery, 'lookdfklsdfk..............................')
+  // console.log('[folder], [ext], [path], [name]')
+  // console.log(entry)
+  let target = null;
+  let match;
+
+  Object.keys(entry).forEach((item) => {
+    let a = new RegExp('\\/(' + item + ')\\/')
+
+    if(match = resourcePath.match(a)) {
+      if(!target) {
+        target = match[1];
+      } else {
+        throw new Error(target + '匹配到不止一个入口')
+      }
+    }
+    
+  })
+
+  return target;
+}
+
 exports.cssLoaders = function (options) {
   options = options || {}
 
@@ -115,7 +140,6 @@ exports.getHtmls = function(entries, HtmlWebpackPlugin, projectsDir) {
   var htmlArray = [];
 
   Object.keys(entries).forEach(function(element){
-    console.log(element)
     let obj = {
       _html:element,
       title:'',
@@ -131,7 +155,7 @@ exports.getHtmls = function(entries, HtmlWebpackPlugin, projectsDir) {
 var getHtmlConfig = function(name,chunks, projectsDir) {
   return {
       template:`${projectsDir}/${name}/${name}.html`,
-      filename:`${name}/${name}.html`,
+      filename:`${name}.html`, // ${name}/
       inject: true,
       hash: false,
       chunks:[name]

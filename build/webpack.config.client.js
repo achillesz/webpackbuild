@@ -31,7 +31,7 @@ const devServer = {
   port: 8000,
   host: 'localhost',
   open: true,
-  openPage: ['/projecta/'],
+  openPage: ['dist/projecta.html'],
   overlay: {
     errors: true
   },
@@ -107,8 +107,7 @@ if (isDev) {
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         moduleFilename: ({ name }) => {
-          console.log(name, '????????????????????')
-          return `${name}/[id].[hash].css`
+          return `${name}/css/[id].[hash].css`
         },
         // filename: (chunkData) => {
         //   console.log(chunkData, 'n......')
