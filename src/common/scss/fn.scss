@@ -1,0 +1,10 @@
+$baseWidthSize: 37.5px;
+@function toRem($px) {
+    @return $px / $baseWidthSize * 1rem;
+}
+
+.text-ellipsis-one {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

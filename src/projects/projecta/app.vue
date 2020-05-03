@@ -1,9 +1,11 @@
 <template>
   <div class="abc">
-    <div>{{ a }} ?</div>
-
+    <div>{{ a }} hah11</div>
     <Loading></Loading>
-    <img src="./rightshare2x.png" alt="">
+    <img src="./rightshare2x.png" alt="" />
+    <div>
+      <img src="" alt="" />
+    </div>
     <div class="bbb">bbbb</div>
   </div>
 </template>
@@ -27,14 +29,14 @@
     }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus" rel="stylesheet/stylus">
+    @import '~common/stylus/variable';
+    /* @import "./test.styl"; */
+    
     .abc {
-        background-image: url(./rightshare2x.png);
         left: 0;
         top: 0;
-    }
-    
-    .bbb {
-        background-image: url(./img/initbg.png);
+        transform: matrix(2);
+        background: url(./rightshare2x.png);
     }
 </style>

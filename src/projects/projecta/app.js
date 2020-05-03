@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import App from './app.vue'
 import 'common/stylus/index.styl'
+// import 'common/scss/fn.scss'
 // import createRouter from './config/router'
 // import createStore from './store/store'
 

@@ -43,7 +43,7 @@ exports.cssLoaders = function (options) {
   const cssLoader = {
     loader: 'css-loader',
     options: {
-      minimize: process.env.NODE_ENV === 'production',
+      // minimize: process.env.NODE_ENV === 'production',
       sourceMap: options.sourceMap
     }
   }
@@ -67,6 +67,7 @@ exports.cssLoaders = function (options) {
       })
     }
 
+
     // Extract CSS when that option is specified
     // (which is the case during production build)
     if (options.extract) {
@@ -74,8 +75,17 @@ exports.cssLoaders = function (options) {
       //   use: loaders,
       //   fallback: 'vue-style-loader'
       // })
+      let a = [options.extract].concat(loaders);
+    
+      // console.log(loader, ':', a)
+      return a
+  
     } else {
-      return ['vue-style-loader'].concat(loaders)
+      let a = ['vue-style-loader'].concat(loaders);
+    
+      // console.log(loader, ':', a)
+      return a
+  
     }
   }
 
@@ -93,8 +103,11 @@ exports.cssLoaders = function (options) {
 
 // Generate loaders for standalone style files (outside of .vue)
 exports.styleLoaders = function (options) {
+  console.log(options, 'wo kao.......')
   const output = []
   const loaders = exports.cssLoaders(options)
+
+
   for (const extension in loaders) {
     const loader = loaders[extension]
     output.push({

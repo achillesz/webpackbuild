@@ -1,4 +1,6 @@
 const path = require('path');
+const utils = require('./utils')
+const config1 = require('./config')
 const HTMLPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -52,21 +54,10 @@ if (isDev) {
   config = merge(baseConfig, {
     devtool: '#cheap-module-eval-source-map',
     module: {
-      rules: [
-        {
-        test: /\.styl(us)?$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          'stylus-loader'
-        ]
-      }]
+      rules: utils.styleLoaders({
+          sourceMap: config1.dev.cssSourceMap,
+          usePostCSS: true
+        })
     },
     devServer,
     plugins: defaultPluins.concat([
@@ -81,20 +72,26 @@ if (isDev) {
     //   vendor: ['vue']
     // },
     module: {
-      rules: [{
-        test: /\.styl/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          'stylus-loader'
-        ]
-      }]
+      rules: utils.styleLoaders({
+        sourceMap: config1.build.productionSourceMap, //开启 文件映射
+        extract: MiniCssExtractPlugin.loader,
+        
+        usePostCSS: true
+      }),
+      // rules: [{
+      //   test: /\.styl/,
+      //   use: [
+      //     MiniCssExtractPlugin.loader,
+      //     'css-loader',
+      //     {
+      //       loader: 'postcss-loader',
+      //       options: {
+      //         sourceMap: true
+      //       }
+      //     },
+      //     'stylus-loader'
+      //   ]
+      // }]
     },
     // optimization: {
     //   splitChunks: {
