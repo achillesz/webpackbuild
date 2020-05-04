@@ -38,10 +38,14 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
     @import "./test.styl";
+    @import '~common/stylus/mixin.styl';
     .abc {
-        left: 0;
-        top: 0;
-        transform: matrix(2);
-        background-size: toRem(100px) toRem(100px);
+        position: absolute;
+        width: ptRem(750px);
+        height: toRem(48.5px);
+        background-image: url(./rightshare2x.png);
+        background-size: toRem(150px) toRem(48.5px);
+        top: toRem(5px);
+        right: toRem(20px);
     }
 </style>

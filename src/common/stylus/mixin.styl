@@ -22,10 +22,14 @@ extend-click()
     bottom: -10px
 
 
-$baseWidthSize: 37.5px;
-toRem($px) {
-    @return $px / $baseWidthSize * 1rem;
-}
+$baseWidthSize =  37.5px;
+toRem($px)
+     $px / $baseWidthSize rem;
+
+ptRem($px)
+     $px / $baseWidthSize / 2 rem
+
+
 
 .text-ellipsis-one {
     overflow: hidden;

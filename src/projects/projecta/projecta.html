@@ -1,14 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="dns-prefetch" href="//mpic.secooimg.com" />
+    <link rel="dns-prefetch" href="//mstatic.secooimg.com" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="full-screen" content="yes" />
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="//mstatic.secooimg.com/activity2018/all_min/css/activity2018.min.css">
+    <script src="//mstatic.secooimg.com/activity2018/js/sdk/weixin.sdk1.3.2.js"></script>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
 </head>
 
-<body>
+<body class="eventParent">
     <div id="apps"></div>
+    <script>
+        window.pageConfig = {
+            openDebug: true,
+            initLoad: false,
+            initHead: false
+                // share: {
+                //     title: '寺库“大宝鉴”，鉴包鉴表鉴真心',
+                //     des: '寺库专业鉴定团队来袭，汇聚国内外资深鉴定师为您一对一服务。',
+                //     imgUrl: 'https://pic12.secooimg.com/res/common/ings/ico.png'
+                // }
+        }
+    </script>
 </body>
+<script type="text/javascript" src="//mstatic.secooimg.com/activity2019/js/activity2019.min.js"></script>
 
 </html>
