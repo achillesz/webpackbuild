@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Vuex from 'vuex'
+// import VueRouter from 'vue-router'
+// import Vuex from 'vuex'
 import App from './app.vue'
 import 'common/stylus/index.styl'
 // import createRouter from './config/router'

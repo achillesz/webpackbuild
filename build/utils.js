@@ -14,7 +14,6 @@ exports.assetsPath = function (_path) {
 
 exports.assetsPath1 = function(resourcePath, entry) {
 
-  let findEntry = '';
   // console.log(resourcePath, resourceQuery, 'lookdfklsdfk..............................')
   // console.log('[folder], [ext], [path], [name]')
   // console.log(entry)
@@ -22,9 +21,11 @@ exports.assetsPath1 = function(resourcePath, entry) {
   let match;
 
   Object.keys(entry).forEach((item) => {
-    let a = new RegExp('\\/(' + item + ')\\/')
+    const a = new RegExp('\\/(' + item + ')\\/')
 
-    if(match = resourcePath.match(a)) {
+    match = resourcePath.match(a)
+
+    if (match) {
       if(!target) {
         target = match[1];
       } else {
@@ -75,13 +76,13 @@ exports.cssLoaders = function (options) {
       //   use: loaders,
       //   fallback: 'vue-style-loader'
       // })
-      let a = [options.extract].concat(loaders);
+      const a = [options.extract].concat(loaders);
     
       // console.log(loader, ':', a)
       return a
   
     } else {
-      let a = ['vue-style-loader'].concat(loaders);
+      const a = ['vue-style-loader'].concat(loaders);
     
       // console.log(loader, ':', a)
       return a

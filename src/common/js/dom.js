@@ -1,12 +1,12 @@
-export function hasClass(el, className) {
+export function hasClass (el, className) {
   return el.classList.contains(className)
 }
 
-export function addClass(el, className) {
+export function addClass (el, className) {
   el.classList.add(className)
 }
 
-export function getData(el, name, val) {
+export function getData (el, name, val) {
   const prefix = 'data-'
   if (val) {
     return el.setAttribute(prefix + name, val)
@@ -14,10 +14,10 @@ export function getData(el, name, val) {
   return el.getAttribute(prefix + name)
 }
 
-let elementStyle = document.createElement('div').style
+const elementStyle = document.createElement('div').style
 
-let vendor = (() => {
-  let transformNames = {
+const vendor = (() => {
+  const transformNames = {
     webkit: 'webkitTransform',
     Moz: 'MozTransform',
     O: 'OTransform',
@@ -25,7 +25,7 @@ let vendor = (() => {
     standard: 'transform'
   }
 
-  for (let key in transformNames) {
+  for (const key in transformNames) {
     if (elementStyle[transformNames[key]] !== undefined) {
       return key
     }
@@ -34,7 +34,7 @@ let vendor = (() => {
   return false
 })()
 
-export function prefixStyle(style) {
+export function prefixStyle (style) {
   if (vendor === false) {
     return false
   }

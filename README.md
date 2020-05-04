@@ -12,6 +12,15 @@
 
 [stylus](https://stylus.bootcss.com/docs/functions.html)
 [路径问题](https://zhuanlan.zhihu.com/p/117317876)
+[路径问题2](https://juejin.im/post/5abc62a8f265da23945f8ee8)
+
 
 页面名称：
 chat_detail、chat_list
+
+eslint
+[eslint-config-standard](https://github.com/standard/eslint-config-standard)
+[vue文件包含html](https://github.com/BenoitZugmeyer/eslint-plugin-html)
+eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node
+
+[eslit prettier 冲突](https://github.com/prettier/eslint-config-prettier#readme)

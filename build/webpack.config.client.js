@@ -1,7 +1,7 @@
 const path = require('path');
 const utils = require('./utils')
 const config1 = require('./config')
-const HTMLPlugin = require('html-webpack-plugin');
+// const HTMLPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // const ExtractPlugin = require('extract-text-webpack-plugin');
@@ -12,6 +12,7 @@ const baseConfig = require('./webpack.config.base');
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
+console.log(resolve('src/common'), 'common/src.....................')
 // const VueClientPlugin = require('vue-server-renderer/client-plugin');
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -73,7 +74,7 @@ if (isDev) {
     // },
     module: {
       rules: utils.styleLoaders({
-        sourceMap: config1.build.productionSourceMap, //开启 文件映射
+        sourceMap: config1.build.productionSourceMap, // 开启 文件映射
         extract: MiniCssExtractPlugin.loader,
         
         usePostCSS: true

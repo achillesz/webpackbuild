@@ -1,0 +1,14 @@
+{
+  "extends": [ 
+      "standard",
+      "plugin:vue/recommended",
+      "prettier",
+      "prettier/vue"
+    ],
+  "plugins": [
+    // "html",
+    "import", 
+    "vue"
+  ],
+  "parser": "vue-eslint-parser" // 使用webpack 和 babel 开发的项目 一般都会指定这个为parser babel-eslint
+}
